@@ -1,8 +1,32 @@
 ### GET hello
 GET http://localhost:8888/hello
 
-### Post user
+### Post user gw
 POST http://localhost:8888/gw/com.switchvov.magicrpc.demo.api.UserService
+Content-Type: application/json
+
+{
+  "service": "com.switchvov.magicrpc.demo.api.UserService",
+  "methodSign": "findById@1_int",
+  "args": [
+    100
+  ]
+}
+
+### Post user ga
+POST http://localhost:8888/ga/com.switchvov.magicrpc.demo.api.UserService
+Content-Type: application/json
+
+{
+  "service": "com.switchvov.magicrpc.demo.api.UserService",
+  "methodSign": "findById@1_int",
+  "args": [
+    100
+  ]
+}
+
+### Post user ga mock
+POST http://localhost:8888/ga/com.switchvov.magicrpc.demo.api.UserService?mock=true
 Content-Type: application/json
 
 {

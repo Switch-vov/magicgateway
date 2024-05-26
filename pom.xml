@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>com.switchvov</groupId>
 			<artifactId>magicrpc-core</artifactId>
-			<version>0.0.5</version>
+			<version>0.0.6</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
