@@ -1,4 +1,4 @@
-package com.switchvov.magicgateway;
+package com.switchvov.magicgateway.web.handler;
 
 import com.switchvov.magicrpc.core.api.LoadBalancer;
 import com.switchvov.magicrpc.core.api.RegistryCenter;

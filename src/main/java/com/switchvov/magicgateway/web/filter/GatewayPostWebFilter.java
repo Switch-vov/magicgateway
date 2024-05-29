@@ -1,4 +1,4 @@
-package com.switchvov.magicgateway;
+package com.switchvov.magicgateway.web.filter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
