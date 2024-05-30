@@ -1,5 +1,5 @@
-### Post user ga
-POST http://localhost:8888/ga/com.switchvov.magicrpc.demo.api.UserService
+### Post user gw
+POST http://localhost:8888/gw/magicrpc/com.switchvov.magicrpc.demo.api.UserService
 Content-Type: application/json
 
 {
@@ -10,8 +10,33 @@ Content-Type: application/json
   ]
 }
 
-### Post user ga mock
-POST http://localhost:8888/ga/com.switchvov.magicrpc.demo.api.UserService?mock=true
+### Post user gw mock
+POST http://localhost:8888/gw/magicrpc/com.switchvov.magicrpc.demo.api.UserService?mock=true
+Content-Type: application/json
+
+{
+  "service": "com.switchvov.magicrpc.demo.api.UserService",
+  "methodSign": "findById@1_int",
+  "args": [
+    100
+  ]
+}
+
+
+### Post user gw direct
+POST http://localhost:8888/gw/direct/com.switchvov.magicrpc.demo.api.UserService
+Content-Type: application/json
+
+{
+  "service": "com.switchvov.magicrpc.demo.api.UserService",
+  "methodSign": "findById@1_int",
+  "args": [
+    100
+  ]
+}
+
+### Post user gw direct to backend
+POST http://localhost:8888/gw/direct/com.switchvov.magicrpc.demo.api.UserService?backend=http://localhost:8080/magicrpc
 Content-Type: application/json
 
 {
