@@ -1,9 +1,9 @@
 package com.switchvov.magicgateway.web.handler;
 
 import com.switchvov.magicgateway.DefaultGatewayPluginChain;
+import com.switchvov.magicgateway.GatewayFilter;
 import com.switchvov.magicgateway.GatewayPlugin;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebHandler;
@@ -22,8 +22,17 @@ import java.util.Objects;
 @Slf4j
 public class GatewayWebHandler implements WebHandler {
 
-    @Autowired
-    private List<GatewayPlugin> plugins;
+    private final List<GatewayPlugin> plugins;
+
+    private final List<GatewayFilter> filters;
+
+    public GatewayWebHandler(
+            List<GatewayPlugin> plugins,
+            List<GatewayFilter> filters
+    ) {
+        this.plugins = plugins;
+        this.filters = filters;
+    }
 
     @Override
     public Mono<Void> handle(ServerWebExchange exchange) {
@@ -35,6 +44,9 @@ public class GatewayWebHandler implements WebHandler {
                     """;
             return exchange.getResponse()
                     .writeWith(Mono.just(exchange.getResponse().bufferFactory().wrap(mock.getBytes())));
+        }
+        for (GatewayFilter filter : filters) {
+            filter.filter(exchange);
         }
         return new DefaultGatewayPluginChain(plugins).hander(exchange);
     }
